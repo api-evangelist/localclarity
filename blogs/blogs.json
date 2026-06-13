@@ -1,0 +1,49 @@
+{
+  "aid": "localclarity",
+  "url": "https://www.localclarity.com/all-blogs",
+  "retrieved": "2026-06-13",
+  "posts": [
+    {
+      "title": "Apple Business Starter Guide",
+      "url": "https://www.localclarity.com/blog-posts/apple-business-starter-guide",
+      "date": "2026-06-02",
+      "description": "Connect with Apple's audiences by understanding how to correctly populate and manage your location data."
+    },
+    {
+      "title": "Guide to Google's Review Filter: Why Reviews Are Going Missing",
+      "url": "https://www.localclarity.com/blog-posts/guide-to-googles-review-filter-why-reviews-are-going-missing",
+      "date": "2026-05-20",
+      "description": "Explores how Google's aggressive review filter removes customer feedback and protective strategies for 2026."
+    },
+    {
+      "title": "Four Pillars of SEO for Hotels",
+      "url": "https://www.localclarity.com/blog-posts/four-pillars-of-hotel-seo",
+      "date": "2026-05-10",
+      "description": "Guidance on optimizing hotel listings to attract customers seeking experiential stays."
+    },
+    {
+      "title": "Optimizing GBP Categories for Local Visibility",
+      "url": "https://www.localclarity.com/blog-posts/optimizing-gbp-categories-for-local-visibility",
+      "date": "2026-04-02",
+      "description": "Categories are a critical, yet often overlooked, factor for local SEO success."
+    },
+    {
+      "title": "Understanding Google's Suggested Edits",
+      "url": "https://www.localclarity.com/blog-posts/navigating-googles-suggested-edits",
+      "date": "2026-02-27",
+      "description": "Explains Google's suggested edits feature and how to maintain listing health comprehensively."
+    },
+    {
+      "title": "Why Daily Data Monitoring Is Essential for Local Businesses",
+      "url": "https://www.localclarity.com/blog-posts/why-daily-data-monitoring-is-now-essential-for-local-business-success",
+      "date": "2025-11-13",
+      "description": "Addresses how AI-driven search causes data inaccuracies that spread across platforms."
+    },
+    {
+      "title": "Google Removing, Replacing Q&As Section",
+      "url": "https://www.localclarity.com/blog-posts/google-qa-replaced-by-ask-ai",
+      "date": "2025-11-10",
+      "description": "Documents Google's discontinuation of Q&A API and integration with AI-driven features."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aid": "https://apis.io/aid",
+    "localclarity": "https://www.localclarity.com/",
+    "LocalSEO": "https://schema.org/LocalBusiness",
+    "ReviewManagement": "https://schema.org/Review",
+    "ListingsManagement": "https://schema.org/Place",
+    "GoogleBusinessProfile": "https://schema.org/Organization",
+    "Rankings": "https://schema.org/SearchResultsPage",
+    "ReputationManagement": "https://schema.org/Rating",
+    "apiKey": "https://schema.org/accessCode",
+    "baseURL": "https://schema.org/url",
+    "Documentation": "https://schema.org/TechArticle",
+    "Blog": "https://schema.org/Blog",
+    "BlogPost": "https://schema.org/BlogPosting"
+  },
+  "@type": "WebAPI",
+  "@id": "https://www.localclarity.com/",
+  "name": "LocalClarity REST API",
+  "description": "AI-driven local search management platform for enterprises, agencies, and global brands. Provides programmatic access to Google Business Profiles, local rankings, review management, and business listing data.",
+  "url": "https://dev.localclarity.com/",
+  "provider": {
+    "@type": "Organization",
+    "name": "LocalClarity",
+    "url": "https://www.localclarity.com/",
+    "sameAs": [
+      "https://github.com/localclarity",
+      "https://www.linkedin.com/company/localclarity/",
+      "https://twitter.com/localClarity"
+    ]
+  },
+  "keywords": [
+    "Local SEO",
+    "Google Business Profile",
+    "Review Management",
+    "Local Search",
+    "Listings Management",
+    "Reputation Management",
+    "Rankings",
+    "Enterprise SEO"
+  ],
+  "documentation": "https://dev.localclarity.com/",
+  "termsOfService": "https://www.localclarity.com/",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.localclarity.com/pricing"
+  }
+}
