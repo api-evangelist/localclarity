@@ -1,0 +1,36 @@
+name: LocalClarity FinOps
+description: Financial operations guidance for managing LocalClarity API and platform costs
+url: https://www.localclarity.com/pricing
+
+cost_model:
+  type: Per-location subscription
+  billing_periods:
+    - monthly
+    - annual
+  tiers:
+    - name: Google Only
+      monthly_per_location: 10.00
+      annual_per_location: 8.00
+      currency: USD
+    - name: Professional
+      monthly_per_location: 20.00
+      annual_per_location: 16.00
+      currency: USD
+    - name: Enterprise / Agency
+      pricing: Custom
+      notes: Contact sales for volume-based pricing
+
+api_access:
+  included: API access is available upon request; not described as a separate billable add-on
+  request: Email support@localclarity.com to request API key
+  enterprise: Custom development and advanced integrations available on Enterprise/Agency plan
+
+cost_optimization:
+  - Switch from monthly to annual billing to save 20% per location (Google Only) or 20% (Professional)
+  - Consolidate location management under a single account to leverage volume pricing on Enterprise plans
+  - Use the Google Only plan for businesses with a pure Google presence to reduce per-location cost by 50% vs Professional
+
+notes:
+  - Pricing is per location per month
+  - Unlimited users on Professional and Enterprise plans means no per-seat charges
+  - White-label and custom development costs are negotiated separately on Enterprise plans

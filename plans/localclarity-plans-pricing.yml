@@ -1,0 +1,72 @@
+name: LocalClarity Plans and Pricing
+description: Pricing tiers for LocalClarity local search management platform
+url: https://www.localclarity.com/pricing
+plans:
+  - name: Google Only
+    description: Manage Google listings and reviews for businesses focused solely on Google presence
+    monthly_price: "$10/location/month"
+    annual_price: "$8/location/month"
+    locations: 1
+    users: 3
+    features:
+      - Google listings management
+      - Google reviews management
+      - Basic review dashboard
+      - Auto-responses
+      - Image management
+      - Unlimited reports and downloads
+      - Reporting suite and insights
+      - Automation engine
+      - Local social posting
+      - Keywords tracking
+      - Audit log history
+    support:
+      - Help center
+      - Email and chat support
+
+  - name: Professional
+    description: Multi-platform listing and review management for growing businesses and agencies
+    monthly_price: "$20/location/month"
+    annual_price: "$16/location/month"
+    locations: unlimited
+    users: unlimited
+    features:
+      - All Google Only features
+      - Google listings management
+      - Apple listings management
+      - Bing listings management
+      - Facebook listings management
+      - Waze listings management
+      - 50+ review sources
+      - Sentiment analysis
+      - Competitor intelligence
+      - AI-powered responses
+      - All core features
+    support:
+      - Help center
+      - Email and chat support
+      - Scheduled Zoom support
+
+  - name: Enterprise / Agency
+    description: Full-featured platform for large enterprises and agencies with white-label and custom development
+    monthly_price: Custom pricing based on volume and functionality
+    annual_price: Custom pricing
+    locations: unlimited
+    users: unlimited
+    features:
+      - All Professional features
+      - White-label domains
+      - Custom development
+      - Advanced integrations
+      - Unlimited everything
+      - Fully managed accounts
+    support:
+      - Dedicated client success manager
+      - Custom onboarding
+      - Unmetered professional services
+
+billing:
+  options:
+    - Monthly (cancel anytime)
+    - Annual (discounted rate)
+  notes: Month-to-month plans can be cancelled anytime; annual plans offer discounted per-location rates

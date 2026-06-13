@@ -1,0 +1,24 @@
+name: LocalClarity API Rate Limits
+description: Rate limiting policies for the LocalClarity REST API
+url: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
+
+overview: >
+  LocalClarity implements rate limits on API usage to maintain system performance
+  and ensure fair access for all users. Specific rate limit thresholds are not
+  publicly documented and are communicated to developers upon API key approval.
+  Applications requiring higher thresholds can contact support to discuss specific needs.
+
+policy:
+  enforcement: LocalClarity reserves the right to implement rate limits on API usage
+  purpose: Maintain system performance and prevent abuse
+  customization: Higher rate limit thresholds available upon request to support@localclarity.com
+
+access:
+  method: API key required
+  request_process: Email support@localclarity.com with username, email, and intended use case
+  approval_time: Up to 2-3 business days
+  documentation: Detailed rate limit specs provided with API key approval
+
+contact:
+  email: support@localclarity.com
+  notes: Contact for rate limit increases or enterprise API access requirements

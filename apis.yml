@@ -1,0 +1,67 @@
+aid: localclarity
+name: LocalClarity
+description: >
+  LocalClarity is an AI-driven local search management platform for enterprises,
+  agencies, and global brands. It provides a REST API for managing Google Business
+  Profiles, tracking local rankings, monitoring and responding to reviews across
+  50+ sources, managing business listing data across Google, Apple, Bing, Facebook,
+  and Waze, and automating local SEO workflows at scale.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/localclarity/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Local SEO
+  - Google Business Profile
+  - Review Management
+  - Local Search
+  - Listings Management
+  - Reputation Management
+apis:
+  - name: LocalClarity REST API
+    description: >
+      REST API for programmatic access to LocalClarity platform data including
+      Google Business Profiles, local rankings, review management, and business
+      listing data. API keys are issued upon request and provide access to
+      location data, reviews, rankings, and reporting endpoints.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://dev.localclarity.com/
+    baseURL: https://dev.localclarity.com/
+    tags:
+      - Local SEO
+      - Reviews
+      - Listings
+      - Rankings
+    properties:
+      - type: Documentation
+        url: https://dev.localclarity.com/
+      - type: Authentication
+        url: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
+common:
+  - type: Website
+    url: https://www.localclarity.com/
+  - type: Documentation
+    url: https://dev.localclarity.com/
+  - type: GitHubOrg
+    url: https://github.com/localclarity
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/localclarity/
+  - type: Blog
+    url: https://www.localclarity.com/all-blogs
+  - type: Pricing
+    url: https://www.localclarity.com/pricing
+  - type: StatusPage
+    url: https://www.localclarity.com/
+  - type: X
+    url: https://twitter.com/localClarity
+  - type: Plans
+    url: plans/localclarity-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/localclarity-rate-limits.yml
+  - type: FinOps
+    url: finops/localclarity-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
