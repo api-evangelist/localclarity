@@ -45,5 +45,17 @@
       "date": "2025-11-10",
       "description": "Documents Google's discontinuation of Q&A API and integration with AI-driven features."
     }
-  ]
+  ],
+  "repo": "localclarity",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/localclarity/",
+      "feed_url": "https://www.linkedin.com/company/localclarity/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
