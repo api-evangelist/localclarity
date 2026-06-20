@@ -7,7 +7,7 @@ description: >
   50+ sources, managing business listing data across Google, Apple, Bing, Facebook,
   and Waze, and automating local SEO workflows at scale.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/localclarity/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -26,7 +26,7 @@ apis:
       Google Business Profiles, local rankings, review management, and business
       listing data. API keys are issued upon request and provide access to
       location data, reviews, rankings, and reporting endpoints.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://dev.localclarity.com/
     baseURL: https://dev.localclarity.com/
     tags:
