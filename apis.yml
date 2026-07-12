@@ -40,6 +40,8 @@ apis:
       - type: Authentication
         url: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
 common:
+  - type: DomainSecurity
+    url: security/localclarity-domain-security.yml
   - type: Website
     url: https://www.localclarity.com/
   - type: Documentation
