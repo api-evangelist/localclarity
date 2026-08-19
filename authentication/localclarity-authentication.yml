@@ -1,0 +1,17 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/localclarity-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AuthorizationToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Token provided by LocalClarity (apiDoc header field `Authorization`). Generated
+    by an administrator in Reporting -> Data Studio -> API.
+  sources:
+  - openapi/localclarity-openapi.yml

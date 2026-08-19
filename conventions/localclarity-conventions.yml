@@ -1,0 +1,98 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
+derived_from: openapi/localclarity-openapi.yml
+docs:
+- https://reputationmanager.io/api/assets/apidocs/index.html
+- https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
+note: >
+  Cross-cutting request/response semantics for the LocalClarity API, read from the provider's
+  own apiDoc reference and key-management article and cross-checked against the transcribed
+  OpenAPI. Where LocalClarity documents nothing, this file says so rather than guessing - the
+  absences below are the substance of the artifact.
+authentication:
+  style: api-key
+  transport: header
+  header: Authorization
+  scheme_prefix: none documented
+  issuance: >
+    Self-service since the Data Studio release. An administrator opens Reporting -> Data
+    Studio -> API, clicks Generate New Key, names the key after the consuming application and
+    selects an account scope. The full key is displayed exactly once.
+  issuance_url: https://app.localclarity.com/data-studio/api
+  scoping: >
+    Per-key account scope, selected at generation time. LocalClarity recommends a dedicated
+    key per integration so access can be audited and revoked independently.
+  revocation: >
+    Immediate and irreversible. In-flight requests using a revoked key fail with 401.
+  audit: Per-key request audit logs retained for 12 months.
+  oauth: false
+  see: authentication/localclarity-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  note: >
+    No idempotency key, no request-deduplication window and no safe-retry contract is
+    documented anywhere in the API reference or the knowledge base. This matters most for
+    sendReply, the one write operation, which publishes a public reply to a review: a
+    client that retries after a timeout has no way to avoid posting twice. NO `Idempotency`
+    pointer is emitted in apis.yml because there is no idempotency contract to point at.
+pagination:
+  supported: unknown
+  style: null
+  note: >
+    No pagination parameter, cursor, page-size limit or link header is documented on any of
+    the six endpoints. getReviews and getLocations return bare JSON arrays whose size is
+    bounded only by the profile, so large portfolios have no documented way to page.
+field_expansion:
+  supported: false
+sparse_fields:
+  supported: false
+metadata:
+  supported: false
+  note: >
+    getLocations passes through the Google Business Profile `metadata` and `labels` fields,
+    but LocalClarity exposes no user-defined metadata of its own on API resources.
+request_tracing:
+  request_id_header: none documented
+  note: No correlation or request-id header is documented on requests or responses.
+versioning:
+  scheme: none
+  current: '0.0.0'
+  in_path: false
+  note: >
+    The published apiDoc carries version 0.0.0 and no versioning policy. Paths are
+    unversioned (/api/getReviews, not /api/v1/getReviews), so there is no in-band way for a
+    client to pin a contract. See lifecycle/localclarity-lifecycle.yml.
+error_envelope:
+  rfc9457: false
+  shapes:
+  - '{"message": "<string>"}  # gateway, observed on 401'
+  - '{"error": "<string>"}    # application, published on 403'
+  see: errors/localclarity-problem-types.yml
+rate_limit_signalling:
+  headers: none documented
+  status_on_exhaustion: 403
+  retry_after: false
+  note: >
+    LocalClarity states it "reserves the right to implement rate limits" but publishes no
+    threshold, window or response header. Quota exhaustion surfaces as a 403 carrying
+    {"error":"Quota exceeded"} - not 429 - so a generic HTTP client cannot distinguish it
+    from an authorization failure. See rate-limits/localclarity-rate-limits.yml.
+request_shape:
+  note: >
+    Five of the six endpoints are POST with named parameters (profileId, locationId, ...) but
+    apiDoc records no encoding, so whether they are JSON, form-encoded or query parameters is
+    not stated by the provider. The OpenAPI transcription models them as a JSON body and says
+    so in each requestBody description.
+  read_operations_use_post: true
+  note_on_post_reads: >
+    getReviews, getLocations, getOrganizations and getInsights are all reads exposed over
+    POST. They are therefore not cacheable and not safe by HTTP semantics, which is a real
+    constraint on any agent or proxy in front of this API.
+identifiers:
+  profileId: Returned by getProfiles. Mandatory on every other request.
+  accountId: Returned by getOrganizations. Optional narrowing on getLocations.
+  locationId: Google location id. Optional narrowing on getReviews / getInsights; required on sendReply for Google.
+  pageId: Facebook page id, required on sendReply for Facebook.
+  reviewId: Returned by getReviews. Required on sendReply.

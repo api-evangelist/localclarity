@@ -1,6 +1,17 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.localclarity.com/pricing
 name: LocalClarity Plans and Pricing
 description: Pricing tiers for LocalClarity local search management platform
 url: https://www.localclarity.com/pricing
+plan_count: 3
+api_access:
+  metered_separately: false
+  note: >
+    LocalClarity publishes no API-specific plan, quota or price. API keys are generated from
+    inside the product (Reporting -> Data Studio -> API) by an administrator on any tier, and
+    the pricing page does not attach an API call allowance to a tier. The API's 403
+    {"error":"Quota exceeded"} response proves a quota exists; its value is not published.
 plans:
   - name: Google Only
     description: Manage Google listings and reviews for businesses focused solely on Google presence

@@ -1,0 +1,125 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/localclarity-openapi.yml
+docs: https://reputationmanager.io/api/assets/apidocs/index.html
+note: >
+  Entity graph derived from the id-reference fields and response schemas of the six
+  documented operations. LocalClarity publishes no object reference, so there are no id
+  prefixes to record; the relationships below are read from which identifier each operation
+  requires and which each returns.
+entities:
+- name: Profile
+  description: >
+    The top-level LocalClarity workspace an API key is scoped to. getProfiles is the only
+    operation that takes no identifier, so it is the entry point of the whole API.
+  identifier: profileId
+  returned_by: getProfiles
+  fields:
+  - {name: profileId, type: string, note: Mandatory on every other request.}
+  - {name: profileName, type: string}
+  - {name: role, type: string, note: The calling user's role in the profile.}
+  - {name: userId, type: string, note: Email address of the user.}
+- name: Organization
+  description: >
+    An account inside a profile. Called "organization" by the operation name and "account"
+    by the fields it returns.
+  identifier: accountId
+  returned_by: getOrganizations
+  fields:
+  - {name: accountId, type: string}
+  - {name: accountName, type: string}
+  - {name: userId, type: string}
+- name: Location
+  description: >
+    A business location. The response is a pass-through of the Google Business Profile
+    location resource - name, address, categories, hours, service area, attributes, price
+    lists and location state all carry Google's own semantics and field names.
+  identifier: locationId
+  returned_by: getLocations
+  fields:
+  - {name: name, type: string, note: 'Google identifier in the form accounts/{account_id}/locations/{location_id}.'}
+  - {name: storeCode, type: string, note: Customer's own external identifier, unique within an account.}
+  - {name: locationName, type: string}
+  - {name: primaryPhone, type: string}
+  - {name: address, type: object}
+  - {name: primaryCategory, type: object}
+  - {name: regularHours, type: object}
+  - {name: specialHours, type: object}
+  - {name: serviceArea, type: object}
+  - {name: locationKey, type: object}
+  - {name: latlng, type: object}
+  - {name: openInfo, type: object}
+  - {name: locationState, type: object, note: Output only.}
+  - {name: metadata, type: object, note: Output only.}
+- name: Review
+  description: A review collected from a review source, with the reviewer and any existing reply.
+  identifier: reviewId
+  returned_by: getReviews
+  fields:
+  - {name: reviewId, type: string}
+  - {name: reviewer, type: object, note: displayName + isAnonymous.}
+  - {name: starRating, type: number}
+  - {name: comment, type: string}
+  - {name: createTime, type: string}
+  - {name: updateTime, type: string}
+  - {name: reviewReply, type: object, note: comment + updateTime.}
+- name: Reply
+  description: A published response to a review, with its delivery state.
+  identifier: replyId
+  returned_by: sendReply
+  fields:
+  - {name: replyId, type: string}
+  - {name: reply, type: string}
+  - {name: reviewId, type: string}
+  - {name: reviewDocId, type: string}
+  - {name: profileId, type: string}
+  - {name: accountId, type: string}
+  - {name: userId, type: string}
+  - {name: source, type: string}
+  - {name: replyStatus, type: string}
+  - {name: googleUpdated, type: boolean}
+  - {name: postTime, type: string}
+- name: Insight
+  description: A dated Google Business Profile performance metric for one location.
+  identifier: null
+  returned_by: getInsights
+  fields:
+  - {name: date, type: string}
+  - {name: metric, type: string}
+  - {name: count, type: number}
+  - {name: locationId, type: string}
+  - {name: locationName, type: string}
+  - {name: address, type: object}
+  - {name: timeZone, type: string}
+- name: ReviewSource
+  description: >
+    The platform a review or listing came from. Not a retrievable resource - it appears only
+    as the `source` string on sendReply, documented with the examples "google" and "facebook".
+  identifier: source
+  returned_by: null
+relationships:
+- {from: Organization, to: Profile, type: belongs_to, via: profileId}
+- {from: Profile, to: Organization, type: has_many, via: profileId}
+- {from: Location, to: Profile, type: belongs_to, via: profileId}
+- {from: Location, to: Organization, type: belongs_to, via: accountId}
+- {from: Organization, to: Location, type: has_many, via: accountId}
+- {from: Review, to: Location, type: belongs_to, via: locationId}
+- {from: Location, to: Review, type: has_many, via: locationId}
+- {from: Review, to: Profile, type: belongs_to, via: profileId}
+- {from: Reply, to: Review, type: belongs_to, via: reviewId}
+- {from: Review, to: Reply, type: has_one, via: reviewReply}
+- {from: Reply, to: ReviewSource, type: belongs_to, via: source}
+- {from: Insight, to: Location, type: belongs_to, via: locationId}
+- {from: Location, to: Insight, type: has_many, via: locationId}
+traversal:
+  note: >
+    profileId is the root of every path. A client must call getProfiles first, then
+    getOrganizations or getLocations, then getReviews or getInsights; sendReply needs both a
+    reviewId from getReviews and the location/page identifier for the review's source.
+  entry_point: getProfiles
+summary:
+  entity_count: 7
+  relationship_count: 13
+  external_model: >
+    The Location and Insight entities are largely Google Business Profile's data model
+    surfaced through LocalClarity, not a LocalClarity-native schema.

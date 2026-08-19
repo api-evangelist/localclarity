@@ -1,0 +1,87 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/localclarity-openapi.yml
+docs:
+- https://reputationmanager.io/api/assets/apidocs/index.html
+- https://www.localclarity.com/terms/terms-of-service
+- https://www.localclarity.com/terms/privacy-policy
+note: >
+  LocalClarity makes no standards-conformance claim anywhere on its public surface. The
+  assertions below are derived from the transcribed contract and from a keyword scan of the
+  terms, privacy, about and product pages. No certification, audit report or trust page was
+  found, so NO `Compliance` pointer is emitted in apis.yml.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >
+    The provider publishes apiDoc 0.17.6 HTML, not OpenAPI. openapi/localclarity-openapi.yml
+    is an API Evangelist transcription of that apiDoc, not a provider artifact.
+- id: rest
+  conforms: partial
+  evidence: >
+    HTTP + JSON, but four read operations are exposed over POST (getReviews, getLocations,
+    getOrganizations, getInsights) and paths are RPC-shaped verbs (/api/getReviews), so the
+    uniform-interface and safe-method constraints are not met.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; authentication is a static bearer token in the Authorization header.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 on www.localclarity.com.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >
+    Errors are vendor JSON with two disagreeing shapes ({"message":...} at the gateway,
+    {"error":...} at the application). No application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on www.localclarity.com.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation policy or Sunset/Deprecation header documented.
+- id: rfc6585-429
+  conforms: false
+  evidence: Quota exhaustion is signalled as 403 with {"error":"Quota exceeded"}, not 429.
+- id: ietf-ratelimit-headers
+  conforms: false
+  evidence: No RateLimit-* or X-RateLimit-* headers documented or observed.
+- id: idempotency-key
+  conforms: false
+  evidence: No idempotency key on sendReply, the API's only write operation.
+- id: pagination
+  conforms: false
+  evidence: No pagination parameters, cursors or link headers on any collection response.
+- id: asyncapi
+  conforms: false
+  evidence: No webhooks, events or streaming surface documented; not applicable to this provider.
+- id: mcp
+  conforms: false
+  evidence: No MCP server; no mention of the protocol in docs, release notes or product pages.
+- id: a2a
+  conforms: false
+  evidence: >
+    /.well-known/agent-card.json and /.well-known/agent.json probed on every host - 404 on
+    www.localclarity.com, SPA catch-all HTML on app.localclarity.com and reputationmanager.io,
+    no answer on dev.localclarity.com.
+- id: google-business-profile-api
+  conforms: true
+  evidence: >
+    getLocations returns the Google Business Profile location resource field-for-field
+    (name in accounts/{account_id}/locations/{location_id} form, storeCode, primaryCategory,
+    regularHours, serviceArea, locationState, attributes, priceLists), and getInsights
+    returns GBP performance metrics. LocalClarity is a documented pass-through of Google's
+    model rather than a re-modelling of it.
+certifications: []
+compliance_program:
+  published: false
+  trust_center: false
+  evidence:
+  - {url: 'https://trust.localclarity.com/', status: 0, finding: NXDOMAIN}
+  - {url: 'https://www.localclarity.com/security', status: 404}
+  - {url: 'https://www.localclarity.com/security-and-compliance', status: 404}
+  - {url: 'https://www.localclarity.com/terms/terms-of-service', status: 200, finding: 'one mention of HIPAA in contract language; no certification claimed'}
+  - {url: 'https://www.localclarity.com/terms/privacy-policy', status: 200, finding: 'no SOC 2 / ISO 27001 / PCI DSS / FedRAMP / CSA STAR claim'}
+summary:
+  conforms_count: 1
+  partial_count: 1
+  fails_count: 13

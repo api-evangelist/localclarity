@@ -1,0 +1,21 @@
+generated: '2026-08-13'
+method: generated
+source: openapi/localclarity-openapi.yml
+note: >
+  Packaged agent skills for the LocalClarity API. Every step is grounded in an operationId
+  that exists verbatim in openapi/localclarity-openapi.yml, which is itself a transcription of
+  LocalClarity's published apiDoc reference. LocalClarity publishes no AGENTS.md or skill
+  files of its own; searched 2026-08-13.
+skills:
+- file: localclarity-list-locations.md
+  name: List LocalClarity profiles, accounts and locations
+  api: openapi/localclarity-openapi.yml
+  operations: [getProfiles, getOrganizations, getLocations]
+- file: localclarity-review-and-reply.md
+  name: Retrieve reviews and publish a reply
+  api: openapi/localclarity-openapi.yml
+  operations: [getProfiles, getReviews, sendReply]
+- file: localclarity-performance-insights.md
+  name: Pull Google Business Profile performance insights
+  api: openapi/localclarity-openapi.yml
+  operations: [getProfiles, getLocations, getInsights]

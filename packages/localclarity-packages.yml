@@ -1,0 +1,44 @@
+generated: '2026-08-13'
+method: searched
+source: >
+  npm / PyPI / RubyGems / Packagist / crates.io / NuGet / Maven Central / pkg.go.dev registry
+  search, the LocalClarity knowledge base, and the github.com/localclarity organization.
+packages: []
+summary:
+  package_count: 0
+  official_count: 0
+note: >
+  LocalClarity publishes no first-party client library in any public package registry. The
+  github.com/localclarity organization exists (created 2021-11-05) but the GitHub API reports
+  public_repos: 0, so there is no source-distributed SDK either. The published API
+  documentation (https://reputationmanager.io/api/assets/apidocs/index.html) documents raw
+  HTTP calls with an `Authorization` header and offers no SDK, snippet library, or CLI.
+  Consequently NO `SDKs` pointer is emitted in apis.yml - there is no SDK to point at.
+github_org:
+  url: https://github.com/localclarity
+  exists: true
+  created: '2021-11-05'
+  public_repos: 0
+  is_verified: false
+  description: ''
+  blog: null
+  linked_from_provider_site: false
+  pointer_emitted: false
+  note: >
+    The prior round carried a `GitHubOrg` pointer to https://github.com/localclarity. It has
+    been REMOVED. The org exists and its display name is "LocalClarity", but it has zero
+    public repositories, no description, no website, no verified domain, and localclarity.com
+    never links to GitHub from any page in its navigation, footer, knowledge base or API
+    documentation. Nothing ties it to this company, and even if it is theirs it is not a
+    public GitHub presence. Re-add the pointer if LocalClarity publishes code there or links
+    to it from its own site.
+evidence:
+- url: https://api.github.com/orgs/localclarity
+  status: 200
+  finding: 'type: Organization, public_repos: 0, is_verified: false, blog: null, description: empty'
+- url: https://api.github.com/users/localclarity/repos
+  status: 200
+  finding: empty array
+- url: https://reputationmanager.io/api/assets/apidocs/index.html
+  status: 200
+  finding: apiDoc reference with no SDK or client-library section

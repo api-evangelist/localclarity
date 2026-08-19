@@ -1,0 +1,61 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the LocalClarity API
+  version: 1.0.0
+extends: openapi/localclarity-openapi.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/localclarity-openapi.yml
+  note: >
+    Records the API Evangelist enhancements applied on top of LocalClarity's published
+    contract. LocalClarity publishes apiDoc, not OpenAPI, so the base document is itself a
+    transcription; this overlay carries only the annotations API Evangelist added on top of
+    it and never rewrites a provider-published value.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apis.io/provider/localclarity
+    x-apievangelist-contract-origin: apidoc-0.17.6
+    x-apievangelist-contract-generated: '2018-08-09'
+    x-apievangelist-transcribed: '2026-08-13'
+- target: $.info
+  update:
+    x-apievangelist-gaps:
+    - No provider-published OpenAPI; the reference is apiDoc HTML from 2018.
+    - No idempotency contract on sendReply, the only write operation.
+    - No pagination on any collection response.
+    - Quota exhaustion returns 403, not 429, with no Retry-After.
+    - Two disagreeing error envelopes (gateway {"message"} vs application {"error"}).
+    - Documented base URL https://localclarity.cloud.tyk.io no longer resolves.
+- target: $.paths['/api/getProfiles'].get
+  update:
+    x-apievangelist-role: entry-point
+    x-apievangelist-note: >
+      The only operation that requires no identifier. Every other call needs the profileId
+      this one returns.
+- target: $.paths['/api/sendReply'].post
+  update:
+    x-apievangelist-write: true
+    x-apievangelist-consequence: public
+    x-apievangelist-note: >
+      Publishes a reply visible to the public on Google or Facebook. There is no idempotency
+      key, so a retry after a timeout can post a duplicate reply.
+- target: $.paths['/api/getReviews'].post
+  update:
+    x-apievangelist-note: >
+      A read exposed over POST. Not cacheable and not safe by HTTP semantics; returns an
+      unpaginated array.
+- target: $.paths['/api/getLocations'].post
+  update:
+    x-apievangelist-note: >
+      A read exposed over POST. The response is a pass-through of the Google Business Profile
+      location resource; returns an unpaginated array.
+- target: $.paths['/api/getOrganizations'].post
+  update:
+    x-apievangelist-note: A read exposed over POST. Returns an unpaginated array.
+- target: $.paths['/api/getInsights'].post
+  update:
+    x-apievangelist-note: >
+      A read exposed over POST. Returns Google Business Profile performance metrics as an
+      unpaginated array.

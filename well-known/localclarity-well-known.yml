@@ -1,0 +1,102 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of the /.well-known/ discovery surface on every LocalClarity host in apis.yml
+note: >
+  No document was returned on any host. Every /.well-known/ path on www.localclarity.com
+  returned a real 404 (88-byte error page); dev.localclarity.com and localclarity.cloud.tyk.io
+  did not answer at all (connection timeout / NXDOMAIN); app.localclarity.com and
+  reputationmanager.io answer 200 for EVERY /.well-known/* path with the same single-page-app
+  HTML shell (identical byte length on every path), which is a catch-all, not a document.
+  Because nothing real was served, NO WellKnown or SecurityTxt pointer is emitted in apis.yml.
+  This file records a verified absence.
+hosts:
+- host: https://www.localclarity.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://dev.localclarity.com
+  note: TCP/TLS connection to /.well-known/* timed out on every path (curl exit code 28).
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+  - path: /.well-known/openid-configuration
+    status: 0
+  - path: /.well-known/oauth-authorization-server
+    status: 0
+  - path: /.well-known/api-catalog
+    status: 0
+  - path: /.well-known/ai-plugin.json
+    status: 0
+  - path: /.well-known/agent-card.json
+    status: 0
+  - path: /.well-known/agent.json
+    status: 0
+- host: https://app.localclarity.com
+  note: >
+    SPA catch-all. All three paths returned 200 with an identical 15,297-byte HTML shell -
+    the same body the host returns for /, /login and /signup. Treated as a miss.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    document: false
+- host: https://reputationmanager.io
+  note: >
+    Host of LocalClarity's published API documentation. SPA catch-all - 200 with an identical
+    15,784-byte HTML shell on every /.well-known/* path. Treated as a miss.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html
+    document: false
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    document: false
+- host: https://localclarity.cloud.tyk.io
+  note: >
+    Base URL declared in LocalClarity's own apiDoc project metadata. The hostname returned
+    NXDOMAIN on 2026-08-13, so no path could be probed.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 0
+  - path: /.well-known/security.txt
+    status: 0
+  - path: /.well-known/openid-configuration
+    status: 0
+  - path: /.well-known/oauth-authorization-server
+    status: 0
+  - path: /.well-known/api-catalog
+    status: 0
+  - path: /.well-known/ai-plugin.json
+    status: 0
+summary:
+  documents_found: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false

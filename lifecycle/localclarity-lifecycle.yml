@@ -1,0 +1,64 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.localclarity.com/resources/release-notes
+docs:
+- https://www.localclarity.com/resources/release-notes
+- https://www.localclarity.com/development-roadmap
+- https://status.localclarity.com/
+- https://www.localclarity.com/terms/terms-of-service
+versioning:
+  scheme: none
+  current: '0.0.0'
+  docs: null
+  note: >
+    Paths are unversioned and the published apiDoc declares version 0.0.0. LocalClarity
+    publishes no API versioning policy, no version header and no date-based version train.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  note: >
+    No API deprecation policy, no RFC 8594 Sunset/Deprecation header support, and no
+    deprecated operations in the published contract. NO `Deprecation` pointer is emitted in
+    apis.yml. The one dated signal of drift is the contract itself: the apiDoc LocalClarity
+    still links as its "full API Documentation" was generated 2018-08-09 by apidoc 0.17.6,
+    and the base URL it declares (https://localclarity.cloud.tyk.io) returned NXDOMAIN when
+    probed on 2026-08-13 - a documented base that no longer resolves, with no deprecation
+    notice attached.
+release_cadence:
+  published: true
+  claim: 'Bi-Weekly Releases (stated on localclarity.com)'
+  changelog: https://www.localclarity.com/resources/release-notes
+  observed: 'Ten dated entries between 2026-06-03 and 2026-07-30 on the release-notes page.'
+  scope: >
+    Release notes cover the LocalClarity web platform. No entry in the observed window
+    mentions the REST API, so the changelog is not an API changelog.
+  see: changelog/localclarity-changelog.yml
+roadmap:
+  url: https://www.localclarity.com/development-roadmap
+  published: true
+  status: 200
+status_page:
+  url: https://status.localclarity.com/
+  published: true
+  status: 200
+  provider: Better Stack (statuspage.betteruptime.com)
+  note: >
+    Verified live on 2026-08-13; status.localclarity.com is a CNAME to
+    statuspage.betteruptime.com. The apis.yml `StatusPage` pointer previously aimed at the
+    marketing homepage and has been corrected to this host.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment was found on the pricing, terms or status pages.
+key_lifecycle:
+  source: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
+  issuance: Self-service, admin-only, via Reporting -> Data Studio -> API.
+  display: Full key shown once at generation.
+  revocation: Immediate and irreversible; in-flight requests fail with 401.
+  audit_retention: 12 months of per-key request audit logs.
+  rotation_guidance: >
+    LocalClarity recommends one dedicated key per integration, storage in environment
+    variables rather than source, and periodic rotation with usage monitoring.

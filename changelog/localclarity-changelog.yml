@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.localclarity.com/resources/release-notes
+url: https://www.localclarity.com/resources/release-notes
+scheme: dated-entries
+current_version: null
+cadence: 'Bi-weekly, per LocalClarity''s own marketing claim ("Bi-Weekly Releases").'
+scope: platform
+note: >
+  This is a PLATFORM changelog, not an API changelog. Every entry in the observed window
+  describes web-application behaviour; none records a change to the REST API's endpoints,
+  parameters or responses. A consumer of the API has no dated record of contract change.
+  Entries below are the recent window as published on 2026-08-13, verbatim titles and dates.
+entries:
+- date: '2026-07-30'
+  type: Enhancement
+  title: Faster Google Review Removal Detection
+  breaking: false
+  highlights: >
+    Google review verification increased from once per month to once per week, so removed
+    reviews are identified sooner.
+- date: '2026-07-30'
+  type: Enhancement
+  title: Smarter Rating-Only Responses
+  breaking: false
+  highlights: >
+    Administrator controls over multilingual automated response campaigns for reviews that
+    carry a star rating but no written comment.
+- date: '2026-07-30'
+  type: Enhancement
+  title: Expanded Shortcut Navigation
+  breaking: false
+  highlights: Personalized shortcuts extended to frequently accessed Settings pages.
+- date: '2026-06-25'
+  type: New Feature
+  title: Google's New Review Reply State
+  breaking: false
+  highlights: >
+    Follow-up check with Google after a reply is sent to confirm published / pending /
+    rejected state; ReviewsInbox gains status language, reply source indicators and badges.
+- date: '2026-06-03'
+  type: Enhancement
+  title: LC2.0 - Experience Rebuild Notes
+  breaking: false
+  highlights: >
+    RealityCheck surfaced more directly; filters, custom links, reporting and module settings
+    relocated as part of the LocalClarity 2.0 platform update.
+- date: '2026-06-03'
+  type: Enhancement
+  title: LC2.0 - Navigation
+  breaking: false
+  highlights: Platform navigation rebuilt around six core modules with reorderable shortcuts.
+- date: '2026-06-03'
+  type: Enhancement
+  title: LC2.0 - Right Navigation
+  breaking: false
+  highlights: >
+    Unified right-hand command surface spanning every module - filters, saved views, chat,
+    AI tools and urgent notifications - configurable per module at profile level.
+- date: '2026-06-03'
+  type: Enhancement
+  title: LC2.0 - Google Audits
+  breaking: false
+  highlights: >
+    Audit Logs turned into a portfolio-wide reporting workspace over listing change history.
+- date: '2026-06-03'
+  type: New Feature
+  title: LC2.0 - Filter Composer
+  breaking: false
+  highlights: Direct control over the new right-side filter navigation.
+- date: '2026-06-03'
+  type: New Feature
+  title: LC2.0 - Navigation Control
+  breaking: false
+  highlights: User-level control over navigation presentation and ordering.
+summary:
+  entry_count: 10
+  window: '2026-06-03 to 2026-07-30'
+  api_entries: 0
+  breaking_entries: 0

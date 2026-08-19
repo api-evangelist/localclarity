@@ -1,3 +1,6 @@
+generated: '2026-08-13'
+method: derived
+source: plans/localclarity-plans-pricing.yml
 name: LocalClarity FinOps
 description: Financial operations guidance for managing LocalClarity API and platform costs
 url: https://www.localclarity.com/pricing
@@ -21,8 +24,11 @@ cost_model:
       notes: Contact sales for volume-based pricing
 
 api_access:
-  included: API access is available upon request; not described as a separate billable add-on
-  request: Email support@localclarity.com to request API key
+  included: API access is not described as a separate billable add-on on the pricing page
+  request: >
+    Self-service since the Data Studio release - an administrator generates a key at
+    Reporting -> Data Studio -> API. (The knowledge base previously routed key requests
+    through support@localclarity.com; that step is no longer required.)
   enterprise: Custom development and advanced integrations available on Enterprise/Agency plan
 
 cost_optimization:

@@ -1,24 +1,50 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
 name: LocalClarity API Rate Limits
-description: Rate limiting policies for the LocalClarity REST API
+description: Rate limiting policy for the LocalClarity REST API
 url: https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
-
+limit_count: 0
+limits: []
 overview: >
-  LocalClarity implements rate limits on API usage to maintain system performance
-  and ensure fair access for all users. Specific rate limit thresholds are not
-  publicly documented and are communicated to developers upon API key approval.
-  Applications requiring higher thresholds can contact support to discuss specific needs.
-
+  LocalClarity publishes NO numeric rate limit. Its key-management article states only that it
+  "reserves the right to implement rate limits on API usage to maintain system performance and
+  ensure fair access for all users" and directs applications needing higher thresholds to
+  support. A limit is nevertheless enforced: every documented endpoint publishes an
+  HTTP 403 response carrying {"error":"Quota exceeded"}. The value, window and scope of that
+  quota are not stated anywhere on the public surface.
 policy:
-  enforcement: LocalClarity reserves the right to implement rate limits on API usage
-  purpose: Maintain system performance and prevent abuse
-  customization: Higher rate limit thresholds available upon request to support@localclarity.com
-
+  published_threshold: false
+  enforcement: LocalClarity reserves the right to implement rate limits on API usage.
+  purpose: Maintain system performance and prevent abuse.
+  customization: Higher thresholds available on request to support@localclarity.com.
+signalling:
+  response_headers: []
+  status_on_exhaustion: 403
+  status_expected_by_convention: 429
+  retry_after: false
+  body_on_exhaustion: '{"error":"Quota exceeded"}'
+  note: >
+    This is the agent-relevant finding. Quota exhaustion is returned as 403 rather than 429,
+    with no RateLimit-*, X-RateLimit-* or Retry-After header on the response. A client cannot
+    see how much budget remains, cannot compute a backoff from the response, and cannot
+    distinguish quota exhaustion from an authorization failure by status code alone - only by
+    parsing the body, whose envelope field ({"error"}) differs from the gateway's 401
+    envelope field ({"message"}).
+  evidence:
+  - source: apiDoc published response examples on all six documented endpoints
+    url: https://reputationmanager.io/api/assets/apidocs/index.html
+  - source: live probe of the gateway
+    url: https://dev.localclarity.com/api/
+    http_status: 401
+    fetched: '2026-08-13'
 access:
-  method: API key required
-  request_process: Email support@localclarity.com with username, email, and intended use case
-  approval_time: Up to 2-3 business days
-  documentation: Detailed rate limit specs provided with API key approval
-
+  method: API key in the Authorization request header
+  issuance: Self-service, admin-only, at Reporting -> Data Studio -> API in the LocalClarity app.
+  issuance_url: https://app.localclarity.com/data-studio/api
+  revocation: Immediate and irreversible; in-flight requests fail with 401.
+  audit_retention: 12 months of per-key request audit logs.
+  guidance: One dedicated key per integration so access can be audited and revoked independently.
 contact:
   email: support@localclarity.com
-  notes: Contact for rate limit increases or enterprise API access requirements
+  notes: Contact for rate limit increases or enterprise API access requirements.

@@ -1,0 +1,565 @@
+[
+  {
+    "type": "post",
+    "url": "/api/sendReply",
+    "title": "Send Reply",
+    "name": "Send_Reply",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>id of profile.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "locationId",
+            "description": "<p>id of google location (For source Google).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageId",
+            "description": "<p>id of facebook page (For source Google).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "reviewId",
+            "description": "<p>id of the review.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "reply",
+            "description": "<p>reply text.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "source",
+            "description": "<p>source of review (eg:google or facebook).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "{\"reply\":\"string\",\"userId\":\"string\",\"reviewId\":\"string\",\"profileId\":\"string\",\"accountId\":\"string\",\"date\":\"string\",\"reviewDocId\":\"string\",\"time\":\"2014-03-19 16:28:29string\",\"replyId\":\"string\",\"googleUpdated\":\"boolean\",\"postTime\":\"string\",\"source\":\"string\",\"replyStatus\":\"string\"}\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "type": "post",
+    "url": "/api/getInsights",
+    "title": "Get Insights",
+    "name": "getInsights",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>id of profile.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "locationId",
+            "description": "<p>id of location(Optional).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "[{\"date\":\"string\",\"locationName\":\"string\",\"address\":{\"country\":\"string\",\"postalCode\":\"string\",\"locality\":\"string\",\"addressLines\":[\"string\"],\"administrativeArea\":\"string\"},\"count\":\"number\",\"timeZone\":\"string\",\"metric\":\"String\",\"locationId\":\"string\",\"profileId\":\"string\"}]\n\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "type": "post",
+    "url": "/api/getLocations",
+    "title": "Get Locations",
+    "name": "getLocations",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>id of the profile.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "accountId",
+            "description": "<p>id of the account(Optional).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Google identifier for this location in the form: accounts/{account_id}/locations/{location_id} . In the context of matches, this field will not be populated.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "languageCode",
+            "description": "<p>The language of the location. Set during creation and not updateable.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "storeCode",
+            "description": "<p>External identifier for this location, which must be unique inside a given account. This is a means of associating the location with your own records.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "locationName",
+            "description": "<p>Location name should reflect your business's real-world name, as used consistently on your storefront, website, and stationery, and as known to customers. Any additional information, when relevant, can be included in other fields of the resource (for example, Address, Categories). Don't add unnecessary information to your name (for example, prefer &quot;Google&quot; over &quot;Google Inc. - Mountain View Corporate Headquarters&quot;). Don't include marketing taglines, store codes, special characters, hours or closed/open status, phone numbers, website URLs, service/product information, location/address or directions, or containment information (for example, &quot;Chase ATM in Duane Reade&quot;).</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "primaryPhone",
+            "description": "<p>A phone number that connects to your individual business location as directly as possible. Use a local phone number instead of a central, call center helpline number whenever possible.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "additionalPhones[]",
+            "description": "<p>Up to two phone numbers (mobile or landline, no fax) at which your business can be called, in addition to your primary phone number.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "address",
+            "description": "<p>A precise, accurate address to describe your business location. PO boxes or mailboxes located at remote locations are not acceptable. At this time, you can specify a maximum of five addressLines values in the address.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "primaryCategory",
+            "description": "<p>Category that best describes the core business this location engages in.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "additionalCategories[]",
+            "description": "<p>Additional categories to describe your business. Categories help your customers find accurate, specific results for services they're interested in. To keep your business information accurate and live, make sure that you use as few categories as possible to describe your overall core business. Choose categories that are as specific as possible, but representative of your main business.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "websiteUrl",
+            "description": "<p>A URL for this business. If possible, use a URL that represents this individual business location instead of a generic website/URL that represents all locations, or the brand.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "regularHours",
+            "description": "<p>Operating hours for the business.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "specialHours",
+            "description": "<p>Special hours for the business. This typically includes holiday hours, and other times outside of regular operating hours. These override regular business hours.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "serviceArea",
+            "description": "<p>Service area businesses provide their service at the customer's location. If this business is a service area business, this field describes the area(s) serviced by the business.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "locationKey",
+            "description": "<p>A collection of keys that link this business to other Google properties, such as a Google+ page and Google Maps Places.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "labels[]",
+            "description": "<p>A collection of free-form strings to allow you to tag your business. These labels are NOT user facing; only you can see them. Limited to 255 characters (per label).</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "adWordsLocationExtensions",
+            "description": "<p>Additional information that is surfaced in AdWords.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "latlng",
+            "description": "<p>User-provided latitude and longitude. When creating a location, this field is ignored if the provided address geocodes successfully. This field is only returned on get requests if the user-provided latlng value was accepted during create, or the latlng value was updated through the Google My Business website. This field cannot be updated.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "openInfo",
+            "description": "<p>A flag that indicates whether the location is currently open for business.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "locationState",
+            "description": "<p>Output only. A set of booleans that reflects the state of a location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "attributes[]",
+            "description": "<p>Attributes for this location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "metadata",
+            "description": "<p>Output Only. Additional non-user-editable information.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "priceLists[]",
+            "description": "<p>Price list information for this location.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "profile",
+            "description": "<p>Describes your business in your own voice and shares with users the unique story of your business and offerings.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "[{\"name\":\"string\",\"languageCode\":\"string\",\"storeCode\":\"string\",\"locationName\":\"string\",\"primaryPhone\":\"string\",\"additionalPhones\":[\"string\"],\"address\":{\"revision\":\"number\",\"regionCode\":\"string\",\"languageCode\":\"string\",\"postalCode\":\"string\",\"sortingCode\":\"string\",\"administrativeArea\":\"string\",\"locality\":\"string\",\"sublocality\":\"string\",\"addressLines\":[\"string\"],\"recipients\":[\"string\"],\"organization\":\"string\"},\"primaryCategory\":{\"displayName\":\"string\",\"categoryId\":\"string\"},\"additionalCategories\":[{\"displayName\":\"string\",\"categoryId\":\"string\"}],\"websiteUrl\":\"string\",\"regularHours\":{\"periods\":[{\"openDay\":\"string\",\"openTime\":\"string\",\"closeDay\":\"string\",\"closeTime\":\"string\"}]},\"specialHours\":{\"specialHourPeriods\":[{\"startDate\":{\"day\":\"string\",\"month\":\"string\",\"year\":\"string\"},\"openTime\":\"string\",\"endDate\":{\"day\":\"string\",\"month\":\"string\",\"year\":\"string\"},\"closeTime\":\"string\",\"isClosed\":\"boolean\"}]},\"serviceArea\":{\"businessType\":\"string\",\"radius\":{\"latlng\":{\"latitude\":\"number\",\"longitude\":\"number\"},\"radiusKm\":\"number\"},\"places\":{\"placeInfos\":[{\"name\":\"string\",\"placeId\":\"string\"}]}},\"locationKey\":{\"plusPageId\":\"string\",\"placeId\":\"string\",\"explicitNoPlaceId\":\"boolean\",\"requestId\":\"string\"},\"labels\":[\"string\"],\"adWordsLocationExtensions\":{\"adPhone\":\"string\"},\"latlng\":{\"latitude\":\"number\",\"longitude\":\"number\"},\"openInfo\":{\"status\":\"string\",\"canReopen\":\"boolean\",\"openingDate\":{\"day\":\"string\",\"month\":\"string\",\"year\":\"string\"}},\"locationState\":{\"isGoogleUpdated\":\"boolean\",\"isDuplicate\":\"boolean\",\"isSuspended\":\"boolean\",\"canUpdate\":\"boolean\",\"canDelete\":\"boolean\",\"isVerified\":\"boolean\",\"needsReverification\":\"boolean\",\"isPendingReview\":\"boolean\",\"isDisabled\":\"boolean\",\"isPublished\":\"boolean\",\"isDisconnected\":\"boolean\",\"isLocalPostApiDisabled\":\"boolean\",\"hasPendingVerification\":\"boolean\"},\"attributes\":[{\"attributeId\":\"string\",\"valueType\":\"string\",\"values\":[\"value\"],\"repeatedEnumValue\":{\"setValues\":[\"string\"],\"unsetValues\":[\"string\"]},\"urlValues\":[{\"url\":\"string\"}]}],\"metadata\":{\"duplicate\":{\"locationName\":\"string\",\"placeId\":\"string\",\"access\":\"string\"},\"mapsUrl\":\"string\",\"newReviewUrl\":\"string\"},\"priceLists\":[{\"priceListId\":\"string\",\"labels\":[{\"displayName\":\"string\",\"description\":\"string\",\"languageCode\":\"string\"}],\"sourceUrl\":\"string\",\"sections\":[{\"sectionId\":\"string\",\"labels\":[{\"displayName\":\"string\",\"description\":\"string\",\"languageCode\":\"string\"}],\"items\":[{\"itemId\":\"string\",\"labels\":[{\"displayName\":\"string\",\"description\":\"string\",\"languageCode\":\"string\"}],\"price\":{\"currencyCode\":\"string\",\"units\":\"string\",\"nanos\":\"number\"}}]}]}],\"profile\":{\"description\":\"string\"}}]\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "type": "post",
+    "url": "/api/getOrganizations",
+    "title": "Get Organizations",
+    "name": "getOrganizations",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>id of the profile.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "accountId",
+            "description": "<p>Id of account in the profile</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "accountName",
+            "description": "<p>Name of the account</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Email id of the user</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "[{\"accountId\":\"string\",\"accountName\":\"string\",\"userId\":\"string\"}]\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "type": "get",
+    "url": "/api/getProfiles",
+    "title": "Get Profiles",
+    "name": "getProfiles",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "role",
+            "description": "<p>User role in the profile</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "profileName",
+            "description": "<p>Name of the profile</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Email id of the user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>Id of the profile.(Mandatory for other requests)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "[{\"role\":\"string\",\"profileName\":\"string\",\"userId\":\"string\",\"profielId\":\"string\"}]\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "type": "post",
+    "url": "/api/getReviews",
+    "title": "Get Reviews",
+    "name": "getReviews",
+    "group": "Endpoints",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Token provided by localclarity</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "profileId",
+            "description": "<p>id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "locationId",
+            "description": "<p>id of location (Optional).</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response: HTTP/1.1 200 OK",
+          "content": "[{\"name\":\"string\",\n         \"reviewId\":\"string\",\n         \"reviewer\":{\"displayName\":\"string\",\"isAnonymous\":\"boolean\"},\n         \"starRating\":\"number\",\n         \"comment\":\"string\",\n         \"createTime\":\"string\",\n         \"updateTime\":\"string\",\n         \"reviewReply\":{\"comment\":\"string\",\"updateTime\":\"string\"}}]\n\nHTTP/1.1 403 Forbidden\n{\"error\":\"Quota exceeded\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/app.java",
+    "groupTitle": "Endpoints"
+  },
+  {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "/home/fv/myapp/apidoc/main.js",
+    "group": "_home_fv_myapp_apidoc_main_js",
+    "groupTitle": "_home_fv_myapp_apidoc_main_js",
+    "name": ""
+  }
+]

@@ -1,0 +1,56 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/localclarity-openapi.yml
+docs_searched:
+- https://www.localclarity.com/resources/knowledge-base
+- https://www.localclarity.com/distinct/ai-powered-local-seo
+- https://www.localclarity.com/resources/release-notes
+note: >
+  LocalClarity ships NO MCP server. Its "AI Agents & Workflows" product page describes
+  in-product generative-AI review responses and automation recipes, not an agent-callable
+  protocol surface; the knowledge base, release notes and API documentation contain no
+  mention of the Model Context Protocol, and /mcp returned 404 on www.localclarity.com and
+  the SPA catch-all shell on dev.localclarity.com. The tools below are a CANDIDATE mapping
+  derived one-per-operation from the transcribed OpenAPI so the shape of a future server is
+  visible; no endpoint exists and none is asserted.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: searched
+server:
+  name: localclarity
+  transport: null
+  url: null
+tools:
+- name: get_profiles
+  description: List the LocalClarity profiles the API key can reach. Returns profileId, which every other call requires.
+  source_operation: openapi/localclarity-openapi.yml#getProfiles
+- name: get_organizations
+  description: List the accounts (organizations) inside a profile.
+  source_operation: openapi/localclarity-openapi.yml#getOrganizations
+- name: get_locations
+  description: List business locations for a profile, optionally narrowed to one account.
+  source_operation: openapi/localclarity-openapi.yml#getLocations
+- name: get_reviews
+  description: Retrieve reviews for a profile, optionally narrowed to one location.
+  source_operation: openapi/localclarity-openapi.yml#getReviews
+- name: send_reply
+  description: Publish a reply to a single review on Google or Facebook.
+  source_operation: openapi/localclarity-openapi.yml#sendReply
+- name: get_insights
+  description: Retrieve Google Business Profile performance metrics for a profile or location.
+  source_operation: openapi/localclarity-openapi.yml#getInsights
+coverage:
+  operations_total: 6
+  tools_derived: 6
+pointer:
+  emitted: false
+  reason: >
+    No `MCPServer` pointer is written into apis.yml. The rating reads that type as "this
+    provider runs an MCP server"; LocalClarity does not, and a candidate derived by API
+    Evangelist must not be scored as a provider-published agent surface.
+

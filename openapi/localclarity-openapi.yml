@@ -1,0 +1,533 @@
+# generated: '2026-08-13'
+# method: generated
+# source: https://reputationmanager.io/api/assets/apidocs/api_data.json
+openapi: 3.1.0
+info:
+  title: LocalClarity API
+  version: 0.0.0
+  summary: Programmatic access to LocalClarity profiles, organizations, locations, reviews and performance
+    insights.
+  description: 'OpenAPI transcription of the API documentation LocalClarity publishes at
+
+    https://reputationmanager.io/api/assets/apidocs/index.html and links from its own
+
+    knowledge base at
+
+    https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly .
+
+
+    LocalClarity does not publish an OpenAPI document. This file was produced by API
+
+    Evangelist by mechanically transcribing the provider''s apiDoc `api_data.json` /
+
+    `api_project.json` (apidoc 0.17.6, generated 2018-08-09). Every path, method,
+
+    parameter, header and example here is copied from those documents; nothing was
+
+    invented. Request-body media type is an API Evangelist modelling choice because
+
+    apiDoc does not record an encoding -- see each requestBody description.
+
+
+    API keys are self-service since the Data Studio release: Reporting -> Data Studio ->
+
+    API tab -> Generate New Key (admin permission required). Keys are shown once,
+
+    revocation is immediate and irreversible, and request audit logs are retained for
+
+    12 months.'
+  contact:
+    name: LocalClarity Support
+    email: support@localclarity.com
+    url: https://www.localclarity.com/contact
+  termsOfService: https://www.localclarity.com/terms/terms-of-service
+  x-transcription-source:
+  - https://reputationmanager.io/api/assets/apidocs/api_data.json
+  - https://reputationmanager.io/api/assets/apidocs/api_project.json
+servers:
+- url: https://localclarity.cloud.tyk.io
+  description: 'Base URL declared by LocalClarity''s own apiDoc project metadata (api_project.json, url
+    field). NOTE: this Tyk Cloud hostname returned NXDOMAIN on 2026-08-13 -- the published document is
+    dated 2018 and the declared host no longer resolves.'
+- url: https://dev.localclarity.com
+  description: Live LocalClarity host. On 2026-08-13 every path under /api/ returned an application/json
+    401 from the API gateway, so an API is served here; LocalClarity does not publish this as the documented
+    base URL.
+security:
+- AuthorizationToken: []
+tags:
+- name: Endpoints
+  description: LocalClarity data endpoints.
+paths:
+  /api/sendReply:
+    post:
+      operationId: sendReply
+      summary: Send Reply
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/Send_Reply`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      requestBody:
+        required: true
+        description: apiDoc documents these as request parameters without naming an encoding; modelled
+          here as a JSON body.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileId:
+                  type: string
+                  description: id of profile.
+                locationId:
+                  type: string
+                  description: id of google location (For source Google).
+                pageId:
+                  type: string
+                  description: id of facebook page (For source Google).
+                reviewId:
+                  type: string
+                  description: id of the review.
+                reply:
+                  type: string
+                  description: reply text.
+                source:
+                  type: string
+                  description: source of review (eg:google or facebook).
+              required:
+              - profileId
+              - locationId
+              - pageId
+              - reviewId
+              - reply
+              - source
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              example: '{"reply":"string","userId":"string","reviewId":"string","profileId":"string","accountId":"string","date":"string","reviewDocId":"string","time":"2014-03-19
+                16:28:29string","replyId":"string","googleUpdated":"boolean","postTime":"string","source":"string","replyStatus":"string"}'
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+  /api/getInsights:
+    post:
+      operationId: getInsights
+      summary: Get Insights
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/getInsights`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      requestBody:
+        required: true
+        description: apiDoc documents these as request parameters without naming an encoding; modelled
+          here as a JSON body.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileId:
+                  type: string
+                  description: id of profile.
+                locationId:
+                  type: string
+                  description: id of location(Optional).
+              required:
+              - profileId
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              example: '[{"date":"string","locationName":"string","address":{"country":"string","postalCode":"string","locality":"string","addressLines":["string"],"administrativeArea":"string"},"count":"number","timeZone":"string","metric":"String","locationId":"string","profileId":"string"}]'
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+  /api/getLocations:
+    post:
+      operationId: getLocations
+      summary: Get Locations
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/getLocations`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      requestBody:
+        required: true
+        description: apiDoc documents these as request parameters without naming an encoding; modelled
+          here as a JSON body.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileId:
+                  type: string
+                  description: id of the profile.
+                accountId:
+                  type: string
+                  description: id of the account(Optional).
+              required:
+              - profileId
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: 'Google identifier for this location in the form: accounts/{account_id}/locations/{location_id}
+                        . In the context of matches, this field will not be populated.'
+                    languageCode:
+                      type: string
+                      description: The language of the location. Set during creation and not updateable.
+                    storeCode:
+                      type: string
+                      description: External identifier for this location, which must be unique inside
+                        a given account. This is a means of associating the location with your own records.
+                    locationName:
+                      type: string
+                      description: Location name should reflect your business's real-world name, as used
+                        consistently on your storefront, website, and stationery, and as known to customers.
+                        Any additional information, when relevant, can be included in other fields of
+                        the resource (for example, Address, Categories). Don't add unnecessary information
+                        to your name (for example, prefer "Google" over "Google Inc. - Mountain View Corporate
+                        Headquarters"). Don't include marketing taglines, store codes, special characters,
+                        hours or closed/open status, phone numbers, website URLs, service/product information,
+                        location/address or directions, or containment information (for example, "Chase
+                        ATM in Duane Reade").
+                    primaryPhone:
+                      type: string
+                      description: A phone number that connects to your individual business location as
+                        directly as possible. Use a local phone number instead of a central, call center
+                        helpline number whenever possible.
+                    additionalPhones:
+                      type: string
+                      description: Up to two phone numbers (mobile or landline, no fax) at which your
+                        business can be called, in addition to your primary phone number.
+                    address:
+                      type: object
+                      description: A precise, accurate address to describe your business location. PO
+                        boxes or mailboxes located at remote locations are not acceptable. At this time,
+                        you can specify a maximum of five addressLines values in the address.
+                    primaryCategory:
+                      type: object
+                      description: Category that best describes the core business this location engages
+                        in.
+                    additionalCategories:
+                      type: object
+                      description: Additional categories to describe your business. Categories help your
+                        customers find accurate, specific results for services they're interested in.
+                        To keep your business information accurate and live, make sure that you use as
+                        few categories as possible to describe your overall core business. Choose categories
+                        that are as specific as possible, but representative of your main business.
+                    websiteUrl:
+                      type: string
+                      description: A URL for this business. If possible, use a URL that represents this
+                        individual business location instead of a generic website/URL that represents
+                        all locations, or the brand.
+                    regularHours:
+                      type: object
+                      description: Operating hours for the business.
+                    specialHours:
+                      type: object
+                      description: Special hours for the business. This typically includes holiday hours,
+                        and other times outside of regular operating hours. These override regular business
+                        hours.
+                    serviceArea:
+                      type: object
+                      description: Service area businesses provide their service at the customer's location.
+                        If this business is a service area business, this field describes the area(s)
+                        serviced by the business.
+                    locationKey:
+                      type: object
+                      description: A collection of keys that link this business to other Google properties,
+                        such as a Google+ page and Google Maps Places.
+                    labels:
+                      type: string
+                      description: A collection of free-form strings to allow you to tag your business.
+                        These labels are NOT user facing; only you can see them. Limited to 255 characters
+                        (per label).
+                    adWordsLocationExtensions:
+                      type: object
+                      description: Additional information that is surfaced in AdWords.
+                    latlng:
+                      type: object
+                      description: User-provided latitude and longitude. When creating a location, this
+                        field is ignored if the provided address geocodes successfully. This field is
+                        only returned on get requests if the user-provided latlng value was accepted during
+                        create, or the latlng value was updated through the Google My Business website.
+                        This field cannot be updated.
+                    openInfo:
+                      type: object
+                      description: A flag that indicates whether the location is currently open for business.
+                    locationState:
+                      type: object
+                      description: Output only. A set of booleans that reflects the state of a location.
+                    attributes:
+                      type: object
+                      description: Attributes for this location.
+                    metadata:
+                      type: object
+                      description: Output Only. Additional non-user-editable information.
+                    priceLists:
+                      type: object
+                      description: Price list information for this location.
+                    profile:
+                      type: object
+                      description: Describes your business in your own voice and shares with users the
+                        unique story of your business and offerings.
+              example: '[{"name":"string","languageCode":"string","storeCode":"string","locationName":"string","primaryPhone":"string","additionalPhones":["string"],"address":{"revision":"number","regionCode":"string","languageCode":"string","postalCode":"string","sortingCode":"string","administrativeArea":"string","locality":"string","sublocality":"string","addressLines":["string"],"recipients":["string"],"organization":"string"},"primaryCategory":{"displayName":"string","categoryId":"string"},"additionalCategories":[{"displayName":"string","categoryId":"string"}],"websiteUrl":"string","regularHours":{"periods":[{"openDay":"string","openTime":"string","closeDay":"string","closeTime":"string"}]},"specialHours":{"specialHourPeriods":[{"startDate":{"day":"string","month":"string","year":"string"},"openTime":"string","endDate":{"day":"string","month":"string","year":"string"},"closeTime":"string","isClosed":"boolean"}]},"serviceArea":{"businessType":"string","radius":{"latlng":{"latitude":"number","longitude":"number"},"radiusKm":"number"},"places":{"placeInfos":[{"name":"string","placeId":"string"}]}},"locationKey":{"plusPageId":"string","placeId":"string","explicitNoPlaceId":"boolean","requestId":"string"},"labels":["string"],"adWordsLocationExtensions":{"adPhone":"string"},"latlng":{"latitude":"number","longitude":"number"},"openInfo":{"status":"string","canReopen":"boolean","openingDate":{"day":"string","month":"string","year":"string"}},"locationState":{"isGoogleUpdated":"boolean","isDuplicate":"boolean","isSuspended":"boolean","canUpdate":"boolean","canDelete":"boolean","isVerified":"boolean","needsReverification":"boolean","isPendingReview":"boolean","isDisabled":"boolean","isPublished":"boolean","isDisconnected":"boolean","isLocalPostApiDisabled":"boolean","hasPendingVerification":"boolean"},"attributes":[{"attributeId":"string","valueType":"string","values":["value"],"repeatedEnumValue":{"setValues":["string"],"unsetValues":["string"]},"urlValues":[{"url":"string"}]}],"metadata":{"duplicate":{"locationName":"string","placeId":"string","access":"string"},"mapsUrl":"string","newReviewUrl":"string"},"priceLists":[{"priceListId":"string","labels":[{"displayName":"string","description":"string","languageCode":"string"}],"sourceUrl":"string","sections":[{"sectionId":"string","labels":[{"displayName":"string","description":"string","languageCode":"string"}],"items":[{"itemId":"string","labels":[{"displayName":"string","description":"string","languageCode":"string"}],"price":{"currencyCode":"string","units":"string","nanos":"number"}}]}]}],"profile":{"description":"string"}}]'
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+  /api/getOrganizations:
+    post:
+      operationId: getOrganizations
+      summary: Get Organizations
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/getOrganizations`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      requestBody:
+        required: true
+        description: apiDoc documents these as request parameters without naming an encoding; modelled
+          here as a JSON body.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileId:
+                  type: string
+                  description: id of the profile.
+              required:
+              - profileId
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    accountId:
+                      type: string
+                      description: Id of account in the profile
+                    accountName:
+                      type: string
+                      description: Name of the account
+                    userId:
+                      type: string
+                      description: Email id of the user
+              example: '[{"accountId":"string","accountName":"string","userId":"string"}]'
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+  /api/getProfiles:
+    get:
+      operationId: getProfiles
+      summary: Get Profiles
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/getProfiles`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    role:
+                      type: string
+                      description: User role in the profile
+                    profileName:
+                      type: string
+                      description: Name of the profile
+                    userId:
+                      type: string
+                      description: Email id of the user
+                    profileId:
+                      type: string
+                      description: Id of the profile.(Mandatory for other requests)
+              example: '[{"role":"string","profileName":"string","userId":"string","profielId":"string"}]'
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+  /api/getReviews:
+    post:
+      operationId: getReviews
+      summary: Get Reviews
+      description: Transcribed verbatim from LocalClarity's published apiDoc entry `Endpoints/getReviews`
+        (https://reputationmanager.io/api/assets/apidocs/index.html).
+      tags:
+      - Endpoints
+      security:
+      - AuthorizationToken: []
+      requestBody:
+        required: true
+        description: apiDoc documents these as request parameters without naming an encoding; modelled
+          here as a JSON body.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileId:
+                  type: string
+                  description: id.
+                locationId:
+                  type: string
+                  description: id of location (Optional).
+              required:
+              - profileId
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              example: "[{\"name\":\"string\",\n         \"reviewId\":\"string\",\n         \"reviewer\"\
+                :{\"displayName\":\"string\",\"isAnonymous\":\"boolean\"},\n         \"starRating\":\"\
+                number\",\n         \"comment\":\"string\",\n         \"createTime\":\"string\",\n   \
+                \      \"updateTime\":\"string\",\n         \"reviewReply\":{\"comment\":\"string\",\"\
+                updateTime\":\"string\"}}]"
+        '401':
+          description: Missing, invalid or revoked API key. Observed live on 2026-08-13 at https://dev.localclarity.com/api/
+            ; LocalClarity's key-management documentation states revoked keys fail in-flight requests
+            with 401.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+              example:
+                message: 'Unauthorized : Provided access token is either null or empty or does not have
+                  permissions to access this resource.null'
+        '403':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaError'
+              example:
+                error: Quota exceeded
+components:
+  securitySchemes:
+    AuthorizationToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token provided by LocalClarity (apiDoc header field `Authorization`). Generated by
+        an administrator in Reporting -> Data Studio -> API.
+  schemas:
+    UnauthorizedError:
+      type: object
+      properties:
+        message:
+          type: string
+    QuotaError:
+      type: object
+      properties:
+        error:
+          type: string
