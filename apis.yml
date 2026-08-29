@@ -11,6 +11,18 @@ description: >
   performance insights, authenticated with an API key that administrators generate
   themselves from the Data Studio module and send in the Authorization header.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: unknown
