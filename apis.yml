@@ -59,7 +59,8 @@ apis:
   description: LocalClarity data endpoints.
   humanURL: https://reputationmanager.io/api/assets/apidocs/index.html
   baseURL: https://dev.localclarity.com/
-  tags:
+  tags: []
+  tags_raw:
   - Endpoints
   properties:
   - type: OpenAPI
