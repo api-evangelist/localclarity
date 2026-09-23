@@ -1,0 +1,32 @@
+# Front Door AI Index — localclarity — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: localclarity
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.localclarity.com
+  final_host: www.localclarity.com
+  ownership: own
+  owner: localclarity
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 15
+  host_score: 15
+  density: 4.64
+  words: 3235
+  tiers:
+    agentic: 1
+    core: 12
+    model: 2
+  ambiguous: 7
+  top_terms:
+    AI: 11
+    automation: 4
+    agent: 2
+    AI agent: 1
+    ChatGPT: 1
+    GPT: 1
+    generative ai: 1
+    smart: 1

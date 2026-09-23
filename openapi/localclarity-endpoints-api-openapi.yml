@@ -9,29 +9,7 @@ info:
 
     knowledge base at
 
-    https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly .
-
-
-    LocalClarity does not publish an OpenAPI document. This file was produced by API
-
-    Evangelist by mechanically transcribing the provider''s apiDoc `api_data.json` /
-
-    `api_project.json` (apidoc 0.17.6, generated 2018-08-09). Every path, method,
-
-    parameter, header and example here is copied from those documents; nothing was
-
-    invented. Request-body media type is an API Evangelist modelling choice because
-
-    apiDoc does not record an encoding -- see each requestBody description.
-
-
-    API keys are self-service since the Data Studio release: Reporting -> Data Studio ->
-
-    API tab -> Generate New Key (admin permission required). Keys are shown once,
-
-    revocation is immediate and irreversible, and request audit logs are retained for
-
-    12 months.'
+    https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly .'
   contact:
     name: LocalClarity Support
     email: support@localclarity.com
@@ -438,15 +416,15 @@ paths:
                 error: Quota exceeded
 components:
   schemas:
-    QuotaError:
-      type: object
-      properties:
-        error:
-          type: string
     UnauthorizedError:
       type: object
       properties:
         message:
+          type: string
+    QuotaError:
+      type: object
+      properties:
+        error:
           type: string
   securitySchemes:
     AuthorizationToken:
