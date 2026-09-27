@@ -416,15 +416,15 @@ paths:
                 error: Quota exceeded
 components:
   schemas:
-    UnauthorizedError:
-      type: object
-      properties:
-        message:
-          type: string
     QuotaError:
       type: object
       properties:
         error:
+          type: string
+    UnauthorizedError:
+      type: object
+      properties:
+        message:
           type: string
   securitySchemes:
     AuthorizationToken:
