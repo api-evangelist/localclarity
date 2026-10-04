@@ -73,6 +73,9 @@ apis:
     url: >-
       https://www.localclarity.com/knowledge-base/generating-an-api-key-to-access-data-directly
 common:
+  - type: CapabilityMap
+    url: capabilities/localclarity-capability-edges.yml
+    name: LocalClarity Business Capability Map
   - type: Overlay
     url: overlays/localclarity-openapi-overlay.yaml
   - type: AgenticAccess

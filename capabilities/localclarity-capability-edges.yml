@@ -1,0 +1,25 @@
+slug: localclarity
+provider: LocalClarity
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Endpoints
+  spec_file: localclarity-endpoints-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.7
+  evidence: POST /api/getReviews  Get Reviews; POST /api/sendReply  Send Reply; POST /api/getInsights
+  reason: Generic 'Endpoints' tag but the operations retrieve customer reviews and send replies across
+    review sources with sentiment insights — voice-of-customer capture and response, mapping to Customer
+    Feedback Management. Some overlap with brand/reputation management (BC-400.20) keeps confidence moderate.
