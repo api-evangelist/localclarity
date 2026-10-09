@@ -81,3 +81,27 @@ billing:
     - Monthly (cancel anytime)
     - Annual (discounted rate)
   notes: Month-to-month plans can be cancelled anytime; annual plans offer discounted per-location rates
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Google Only
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise / Agency
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
